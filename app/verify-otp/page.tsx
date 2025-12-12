@@ -22,7 +22,7 @@ export default function VerifyOtpPage() {
       {
         onSuccess: () => {
           toast.success("Email verified! You can now log in.");
-          router.push("/login"); // Redirect to login page
+          router.push("/"); 
         },
         onError: (err: any) => {
           toast.error(err?.response?.data?.message || "Invalid OTP. Try again.");

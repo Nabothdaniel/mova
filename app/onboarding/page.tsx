@@ -11,7 +11,6 @@ export default function BusinessOnboardingPage() {
     const router = useRouter();
     const params = useSearchParams();
 
-    const businessId = params.get("businessId");
     const email = params.get("email");
 
     const onboarding = useOnboardingBusiness();
@@ -38,10 +37,9 @@ export default function BusinessOnboardingPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!businessId) return toast.error("Missing business ID from signup");
 
         onboarding.mutate(
-            { ...form, businessId },
+            { ...form },
             {
                 onSuccess: () => {
                     toast.success("Onboarding completed! Verify your email OTP.");

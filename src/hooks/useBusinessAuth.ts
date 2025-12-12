@@ -20,7 +20,6 @@ type RegisterBusinessPayload = {
 };
 
 type OnboardingBusinessPayload = {
-  businessId: string;
   phone: string;
   address: string;
   sectorId: string;
@@ -44,28 +43,28 @@ type ResendOtpPayload = {
 // Hooks
 // ---------------------------
 
-// 1️⃣ Business Signup
+// Business Signup
 export function useRegisterBusiness(): UseMutationResult<any, any, RegisterBusinessPayload> {
   return useMutation({
     mutationFn: registerBusiness,
   });
 }
 
-// 2️⃣ Business Onboarding
+// Business Onboarding
 export function useOnboardingBusiness(): UseMutationResult<any, any, OnboardingBusinessPayload> {
   return useMutation({
     mutationFn: onboardingBusiness,
   });
 }
 
-// 3️⃣ Verify Email OTP
+//  Verify Email OTP
 export function useVerifyEmailOtp(): UseMutationResult<any, any, VerifyOtpPayload> {
   return useMutation({
     mutationFn: verifyEmailOtp,
   });
 }
 
-// 4️⃣ Resend Email OTP
+// Resend Email OTP
 export function useResendEmailOtp(): UseMutationResult<any, any, ResendOtpPayload> {
   return useMutation({
     mutationFn: resendEmailOtp,

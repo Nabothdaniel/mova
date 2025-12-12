@@ -27,7 +27,7 @@ export default function BusinessRegisterPage() {
     registerBusiness.mutate(form, {
       onSuccess: (data: any) => {
         toast.success("Signup successful! Proceed to onboarding.");
-        router.push(`/onboarding?businessId=${data?.id}&email=${form.email}`);
+        router.push(`/verify-otp?email=${form.email}`);
       },
       onError: (err: any) => toast.error(err?.response?.data?.message || "Signup failed"),
     });
@@ -36,7 +36,7 @@ export default function BusinessRegisterPage() {
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-0 bg-white rounded-3xl overflow-hidden shadow-2xl">
-        
+
         {/* Left Side */}
         <div className="bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 p-8 lg:p-12 flex flex-col justify-center text-white">
           <h1 className="text-5xl font-bold mb-6">Welcome Business Owner</h1>

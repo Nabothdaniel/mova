@@ -23,8 +23,8 @@ export interface LoginResponse {
     role: "Admin" | "Business" | "Staff" | "Participant";
     isOnboarded: boolean;
   };
-  access_token: string;
-  refresh_token: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export async function login(payload: LoginPayload): Promise<LoginResponse> {
@@ -34,7 +34,6 @@ export async function login(payload: LoginPayload): Promise<LoginResponse> {
 
 
 export async function onboardingBusiness(payload: {
-  businessId: string; 
   phone: string;
   address: string;
   sectorId: string;

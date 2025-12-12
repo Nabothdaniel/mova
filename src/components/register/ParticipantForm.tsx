@@ -33,7 +33,7 @@ export default function ParticipantRegisterPage() {
             {
                 onSuccess: () => {
                     toast.success("Participant account created! Verify your email.");
-                    router.push(`/verify-email?email=${form.email}&role=participant`);
+                    router.push(`/verify-otp?email=${form.email}&role=participant`);
                 },
                 onError: (err: any) => toast.error(err?.response?.data?.message || "Signup failed"),
             }

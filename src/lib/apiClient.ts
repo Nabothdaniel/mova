@@ -8,19 +8,20 @@ const apiClient = axios.create({
   },
 });
 
+
+
 apiClient.interceptors.request.use((config) => {
   if (typeof window === "undefined") return config;
 
-  const token = localStorage.getItem("token");
+    console.log('Interceptor called');
+  const t = localStorage.getItem("access_token");
+  console.log('Token:', t);
+
+  const token = localStorage.getItem("access_token");
   if (token) {
-    if (config.headers && typeof (config.headers as any).set === "function") {
-      (config.headers as any).set("Authorization", `Bearer ${token}`);
-    } else if (config.headers) {
-      (config.headers as any)["Authorization"] = `Bearer ${token}`;
-    }
+    config.headers.Authorization = `Bearer ${token}`;
   }
 
-  return config; 
+  return config;
 });
-
 export default apiClient;

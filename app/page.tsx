@@ -23,9 +23,10 @@ export default function LoginPage() {
       onSuccess(data) {
         toast.success("Login successful");
 
+
         // Store tokens
-        localStorage.setItem("access_token", data.access_token);
-        localStorage.setItem("refresh_token", data.refresh_token);
+        localStorage.setItem("access_token", data.accessToken);
+        localStorage.setItem("refresh_token", data.refreshToken);
         localStorage.setItem("user", JSON.stringify(data.user));
 
         // Role-based redirect
@@ -61,7 +62,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-0 bg-white rounded-3xl overflow-hidden shadow-2xl">
-        
+
         {/* Left Side */}
         <div className="bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 p-8 lg:p-12 flex flex-col justify-center text-white">
           <h1 className="text-5xl font-bold mb-6">Welcome Back</h1>
@@ -76,7 +77,7 @@ export default function LoginPage() {
             <h2 className="text-3xl font-bold mb-6">Login</h2>
 
             <form onSubmit={handleSubmit} className="space-y-5">
-              
+
               <input
                 type="text"
                 placeholder="Email or Username"
