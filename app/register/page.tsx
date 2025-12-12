@@ -1,32 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useRegister } from "@/hooks/auth/useRegister";
+import { useSearchParams } from "next/navigation";
+import RoleSelectionOverlay from "./components/RoleSelectionOverlay";
+import BusinessForm from "./components/BusinessForm";
+import ParticipantForm from "./components/ParticipantForm";
 
 export default function RegisterPage() {
-  const router = useRouter();
-  const register = useRegister();
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const searchParams = useSearchParams();
+  const initialRole = searchParams.get("role");
+  const [role, setRole] = useState<string | null>(initialRole);
 
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    register.mutate(form, {
-      onSuccess: () => {
-        router.push(`/verify-otp?email=${form.email}`);
-      },
-    });
-  }
+  // Show overlay if no role
+  if (!role) return <RoleSelectionOverlay onSelectRole={setRole} />;
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input placeholder="Name" name="name" onChange={(e) => setForm({ ...form, name: e.target.value })} />
-      <input placeholder="Email" name="email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
-      <input placeholder="Password" type="password" name="password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
-
-      <button type="submit" disabled={register.isPending}>
-        {register.isPending ? "Loading..." : "Register"}
-      </button>
-    </form>
+  // Render the correct form based on role
+  return role === "business" ? (
+    <BusinessForm />
+  ) : (
+    <ParticipantForm />
   );
 }

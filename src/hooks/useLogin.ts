@@ -1,14 +1,8 @@
-"use client";
-
 import { useMutation } from "@tanstack/react-query";
-import { loginUser } from "@/services/api/auth";
-import { saveAuth } from "../useAuthState";
+import { login, LoginPayload, LoginResponse } from "@/src/services/api/auth";
 
 export function useLogin() {
-  return useMutation({
-    mutationFn: loginUser,
-    onSuccess: (data) => {
-      saveAuth(data.token, data.user);
-    },
+  return useMutation<LoginResponse, any, LoginPayload>({
+    mutationFn: login,
   });
 }

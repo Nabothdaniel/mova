@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext } from "react";
-import { useAuthState } from "@/hooks/useAuthState";
+import { useAuthState } from "@/src/hooks/useAuthState";
 
 const AuthContext = createContext<any>(null);
 

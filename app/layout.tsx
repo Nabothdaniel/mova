@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import ReactQueryProvider from "@/providers/ReactQueryProvider";
-import { AuthProvider } from "@/providers/AuthProvider";
+import ReactQueryProvider from "@/src/providers/ReactQueryProvider";
+import { AuthProvider } from "@/src/providers/AuthProviders";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <AuthProvider>
             {children}
+             <Toaster position="top-right" reverseOrder={false} />
           </AuthProvider>
         </ReactQueryProvider>
       </body>
