@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -38,7 +38,7 @@ export default function LoginPage() {
 
         if (role === "Business") {
           if (!data.user.isOnboarded) {
-            router.push(`/onboarding?email=${form.username}`);
+            router.push(`/onboarding?email=${form.email}`);
           } else {
             router.push("/business/dashboard");
           }
@@ -80,8 +80,8 @@ export default function LoginPage() {
               <input
                 type="text"
                 placeholder="Email or Username"
-                value={form.username}
-                onChange={(e) => setForm({ ...form, username: e.target.value })}
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
               />
