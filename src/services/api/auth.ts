@@ -13,7 +13,7 @@ export async function registerBusiness(payload: {
 
 
 export interface LoginPayload {
-  username: string; // or email
+  email: string; 
   password: string;
 }
 
