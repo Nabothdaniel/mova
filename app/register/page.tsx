@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import RoleSelectionOverlay from "./components/RoleSelectionOverlay";
-import BusinessForm from "./components/BusinessForm";
-import ParticipantForm from "./components/ParticipantForm";
+import RoleSelectionOverlay from "@/src/components/register/RoleSelectionOverlay";
+import BusinessForm from "@/src/components/register/BusinessForm";
+import ParticipantForm from "@/src/components/register/ParticipantForm";
 
 export default function RegisterPage() {
   const searchParams = useSearchParams();
