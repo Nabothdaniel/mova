@@ -8,7 +8,9 @@ import { useVerifyEmailOtp, useResendEmailOtp } from "@/src/hooks/useBusinessAut
 export default function VerifyOtpPage() {
   const router = useRouter();
   const params = useSearchParams();
-  const email = params.get("email") || "";
+  const email = params?.get("email") || "";
+
+
 
   const [otp, setOtp] = useState("");
   const verifyMutation = useVerifyEmailOtp();
@@ -16,13 +18,16 @@ export default function VerifyOtpPage() {
 
   const handleVerify = () => {
     if (!otp) return toast.error("Please enter your 6-digit OTP");
+    if (!email) return toast.error("Email is required");
+
+
 
     verifyMutation.mutate(
       { email, otp },
       {
         onSuccess: () => {
           toast.success("Email verified! You can now log in.");
-          router.push("/"); 
+          router.push("/");
         },
         onError: (err: any) => {
           toast.error(err?.response?.data?.message || "Invalid OTP. Try again.");
