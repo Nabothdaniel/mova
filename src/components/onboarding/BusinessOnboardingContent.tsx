@@ -11,7 +11,7 @@ export default function BusinessOnboardingContent() {
     const router = useRouter();
     const params = useSearchParams();
 
-    const email = params.get("email");
+    const email = params?.get("email");
 
     const onboarding = useOnboardingBusiness();
 

@@ -5,10 +5,16 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { useVerifyEmailOtp, useResendEmailOtp } from "@/src/hooks/useBusinessAuth";
 
-export default function VerifyOtpPage() {
+export default function VerifyOtpPageContent() {
   const router = useRouter();
   const params = useSearchParams();
   const email = params?.get("email") || "";
+
+
+  if (!email) {
+    toast.error("Email is required");
+    return null;
+  }
 
 
 
@@ -19,6 +25,7 @@ export default function VerifyOtpPage() {
   const handleVerify = () => {
     if (!otp) return toast.error("Please enter your 6-digit OTP");
     if (!email) return toast.error("Email is required");
+
 
 
 

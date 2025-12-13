@@ -8,8 +8,8 @@ import ParticipantForm from "@/src/components/register/ParticipantForm";
 
 export default function RegisterPage() {
   const searchParams = useSearchParams();
-  const initialRole = searchParams.get("role");
-  const [role, setRole] = useState<string | null>(initialRole);
+ const initialRole = searchParams?.get("role") ?? null;
+const [role, setRole] = useState<string | null>(initialRole);
 
   // Show overlay if no role
   if (!role) return <RoleSelectionOverlay onSelectRole={setRole} />;
