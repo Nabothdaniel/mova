@@ -50,18 +50,15 @@ apiClient.interceptors.request.use((config) => {
 apiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.status === 401) {
-      if (!isRefreshing) {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
         const newToken = await refreshToken();
-        error.config.headers.Authorization = `Bearer ${newToken}`;
-        return apiClient.request(error.config);
-      } else {
-        return new Promise((resolve) => {
-          refreshSubscribers.push(() => {
-            error.config.headers.Authorization = `Bearer ${localStorage.getItem("access_token")}`;
-            resolve(apiClient.request(error.config));
-          });
-        });
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return apiClient.request(originalRequest);
+      } catch (err) {
+        return Promise.reject(err);
       }
     }
     return Promise.reject(error);

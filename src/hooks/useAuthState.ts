@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 
-export function saveAuth(token: string, user: any) {
-  localStorage.setItem("token", token);
+export function saveAuth(accessToken: string, refreshToken: string, user: any) {
+  localStorage.setItem("access_token", accessToken);
+  localStorage.setItem("refresh_token", refreshToken);
   localStorage.setItem("user", JSON.stringify(user));
 }
 
 export function clearAuth() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
   localStorage.removeItem("user");
 }
 

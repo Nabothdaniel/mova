@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
-import RegisterPage from "@/src/pages/RegisterPage";
+import RegisterPage from "@/pages/RegisterPage";
 
 export default function Page() {
   return (

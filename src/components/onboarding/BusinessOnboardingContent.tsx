@@ -61,7 +61,7 @@ export default function BusinessOnboardingContent() {
                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                                 <div className="w-6 h-6 bg-orange-500 rounded-full"></div>
                             </div>
-                            <span className="text-2xl font-bold">ninth</span>
+                            <span className="text-2xl font-bold">mova</span>
                         </div>
 
                         <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
